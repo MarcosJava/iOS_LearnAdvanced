@@ -7,23 +7,52 @@
 //
 
 #import "ViewController.h"
+#import "LearnAdvanced-Swift.h"
+#import "SumModel.h"
+#import "CommonDefinition.h"
 
 @interface ViewController ()
-
+    @property (nonatomic, strong) Sum *calc;
+    @property (nonatomic, readwrite) NSString *textForSend;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.calc = [[Sum alloc] init];
+    SumModel *model = [SumModel new];
+    model.num1 = 1;
+    model.num2 = 2;
+    [self.calc calculeWithSumModel: model];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUpdatedData:)
+                                                 name: kPUSH_BT_SEND
+                                               object:nil];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)handleUpdatedData:(NSNotification *)notification {
+    self.textForSend = self.textTextField.text;
 }
 
+- (IBAction)btSender:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName: kPUSH_BT_SEND
+                                                        object:self];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([@"goToSecondView" isEqualToString: segue.identifier]){        
+        SecondViewController *secondVC = (SecondViewController *) segue.destinationViewController;
+        secondVC.texto = self.textForSend;
+    }
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name: kPUSH_BT_SEND
+                                                  object:nil];
+}
 
 @end

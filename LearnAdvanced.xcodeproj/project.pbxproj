@@ -13,6 +13,9 @@
 		18B62B891FB7B78600D28FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B62B881FB7B78600D28FDE /* Assets.xcassets */; };
 		18B62B8C1FB7B78600D28FDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B62B8A1FB7B78600D28FDE /* LaunchScreen.storyboard */; };
 		18B62B8F1FB7B78600D28FDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B62B8E1FB7B78600D28FDE /* main.m */; };
+		18B62B971FB7B7B200D28FDE /* Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B62B961FB7B7B200D28FDE /* Sum.swift */; };
+		18B62B9A1FB7B7C700D28FDE /* SumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B62B991FB7B7C700D28FDE /* SumModel.m */; };
+		18B62B9C1FB7C47E00D28FDE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B62B9B1FB7C47E00D28FDE /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		18B62B8B1FB7B78600D28FDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B62B8D1FB7B78600D28FDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18B62B8E1FB7B78600D28FDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		18B62B951FB7B7B100D28FDE /* LearnAdvanced-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LearnAdvanced-Bridging-Header.h"; sourceTree = "<group>"; };
+		18B62B961FB7B7B200D28FDE /* Sum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sum.swift; sourceTree = "<group>"; };
+		18B62B981FB7B7C700D28FDE /* SumModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SumModel.h; sourceTree = "<group>"; };
+		18B62B991FB7B7C700D28FDE /* SumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SumModel.m; sourceTree = "<group>"; };
+		18B62B9B1FB7C47E00D28FDE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		18B62B9D1FB7C6F000D28FDE /* CommonDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonDefinition.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,12 @@
 				18B62B8A1FB7B78600D28FDE /* LaunchScreen.storyboard */,
 				18B62B8D1FB7B78600D28FDE /* Info.plist */,
 				18B62B8E1FB7B78600D28FDE /* main.m */,
+				18B62B961FB7B7B200D28FDE /* Sum.swift */,
+				18B62B951FB7B7B100D28FDE /* LearnAdvanced-Bridging-Header.h */,
+				18B62B981FB7B7C700D28FDE /* SumModel.h */,
+				18B62B991FB7B7C700D28FDE /* SumModel.m */,
+				18B62B9B1FB7C47E00D28FDE /* SecondViewController.swift */,
+				18B62B9D1FB7C6F000D28FDE /* CommonDefinition.h */,
 			);
 			path = LearnAdvanced;
 			sourceTree = "<group>";
@@ -102,6 +117,7 @@
 				TargetAttributes = {
 					18B62B7B1FB7B78600D28FDE = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -142,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B62B9C1FB7C47E00D28FDE /* SecondViewController.swift in Sources */,
 				18B62B841FB7B78600D28FDE /* ViewController.m in Sources */,
+				18B62B9A1FB7B7C700D28FDE /* SumModel.m in Sources */,
+				18B62B971FB7B7B200D28FDE /* Sum.swift in Sources */,
 				18B62B8F1FB7B78600D28FDE /* main.m in Sources */,
 				18B62B811FB7B78600D28FDE /* AppDelegate.m in Sources */,
 			);
@@ -278,12 +297,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V2686JM7D9;
 				INFOPLIST_FILE = LearnAdvanced/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.mfelipesp.LearnAdvanced;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LearnAdvanced/LearnAdvanced-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -292,12 +315,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V2686JM7D9;
 				INFOPLIST_FILE = LearnAdvanced/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.mfelipesp.LearnAdvanced;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LearnAdvanced/LearnAdvanced-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
