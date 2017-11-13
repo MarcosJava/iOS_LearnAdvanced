@@ -6,4 +6,4 @@ Projeto em Objective-C compartilhando informações com Swift e Swift compartilh
 
 <p> Project in Objective-C shared information with Swift and vice-versa.</p>
 <p> It has bridge and project-Swift.h for shared language.</p>
-<p> This project has a bit NSNotification in action too.</p>
+<p> This project has a bit NSNotification too.</p>
