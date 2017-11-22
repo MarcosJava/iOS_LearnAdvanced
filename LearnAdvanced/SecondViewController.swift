@@ -14,6 +14,20 @@ class SecondViewController: UIViewController {
     
     var texto:String!
     
+    @IBAction func callNsNotification(_ sender: Any) {
+        
+        let nc = NotificationCenter.default // Note that default is now a property, not a method call
+//        nc.addObserver(forName:Notification.Name(rawValue: kPUSH_BT_SEND),
+//                       object:nil, queue:nil,
+//                       using:callNsNotification)
+        
+        
+        nc.post(name:Notification.Name(rawValue: kPUSH_BT_SEND),
+                object: nil,
+                userInfo: ["message":"Hello there!", "date":Date()])
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         responseLabel.text = texto

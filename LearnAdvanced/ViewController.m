@@ -34,11 +34,38 @@
 
 -(void)handleUpdatedData:(NSNotification *)notification {
     self.textForSend = self.textTextField.text;
+    
+    NSDictionary *userInfo = notification.userInfo;
+    
+    //Pela propria viewcontroller nao cair no if, por causa da prepareForSegue.
+    //Get to here by SelfViewController dont enter in if then else because of prepareFoSegue.
+    if (userInfo[@"message"] != nil){
+        NSString *message = userInfo[@"message"];
+        if(userInfo[@"date"] != nil){
+            NSDate *data = userInfo[@"date"];
+            
+            NSString *msg = [NSString stringWithFormat:@"Pegamos um evento %@ as %@", message, data];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Events" message: msg preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:ok];
+            [self presentViewController:alertController animated:true completion:nil];
+        }
+    }
 }
 
 - (IBAction)btSender:(id)sender {
+    NSDate *date = [NSDate date];
+    id objects[] = {self.textTextField.text, date};
+    id keys[] = {@"message", @"date"} ;
+    NSUInteger count = sizeof(objects) / sizeof(id);
+
+    NSDictionary *object = [NSDictionary dictionaryWithObjects:objects
+                                                       forKeys: keys
+                                                         count:count];
+    
+    NSLog(@"%@", object);
     [[NSNotificationCenter defaultCenter] postNotificationName: kPUSH_BT_SEND
-                                                        object:self];
+                                                        object:self userInfo:nil];
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
